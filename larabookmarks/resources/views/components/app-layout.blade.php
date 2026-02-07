@@ -1,25 +1,29 @@
-<x-app-layout>
-    <h1 class="text-xl font-bold mb-4">Mes Catégories</h1>
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'LaraBookmarks') }}</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans antialiased p-6">
+    <!-- Header simple -->
+    <header class="mb-6">
+        <nav class="flex justify-between items-center">
+            <h1 class="text-xl font-bold">{{ config('app.name', 'LaraBookmarks') }}</h1>
+            <div class="space-x-4">
+                <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">Dashboard</a>
+                <a href="{{ route('profile.edit') }}" class="text-blue-600 hover:underline">Profil</a>
+                <form method="POST" action="{{ route('logout') }}" class="inline">
+                    @csrf
+                    <button type="submit" class="text-red-600 hover:underline">Déconnexion</button>
+                </form>
+            </div>
+        </nav>
+    </header>
 
-    <a href="{{ route('categories.create') }}" class="text-green-600 hover:underline mb-4 inline-block">Ajouter une catégorie</a>
-
-    @if($categories->count())
-        <ul class="space-y-2">
-        @foreach($categories as $category)
-            <li class="border p-2 flex justify-between items-center">
-                {{ $category->name }}
-                <div class="space-x-2">
-                    <a href="{{ route('categories.edit', $category) }}" class="text-blue-600 hover:underline">Modifier</a>
-                    <form method="POST" action="{{ route('categories.destroy', $category) }}" class="inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:underline">Supprimer</button>
-                    </form>
-                </div>
-            </li>
-        @endforeach
-        </ul>
-    @else
-        <p>Aucune catégorie.</p>
-    @endif
-</x-app-layout>
+    <main>
+        {{ $slot }}
+    </main>
+</body>
+</html>
