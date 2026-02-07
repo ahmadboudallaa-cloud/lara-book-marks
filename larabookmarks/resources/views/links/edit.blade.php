@@ -31,13 +31,14 @@
             </select>
         </div>
 
-      <div>
-    <label class="block mb-1">Tags (séparés par des virgules)</label>
-    <input type="text" name="tags_text" 
-           value="{{ isset($link) ? implode(',', $link->tags->pluck('name')->toArray()) : '' }}"
-           placeholder="Ex: Laravel, PHP, JS"
-           class="w-full p-2 rounded border border-red-800 text-black" />
+   <div>
+    <label class="block mb-1 text-gray-600">Tags</label>
+    <input type="text" name="tags_text"
+        class="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-600"
+        placeholder="Laravel, PHP, JS"
+        value="{{ old('tags_text', isset($link) ? $link->tags->pluck('name')->implode(',') : '') }}">
 </div>
+
 
 
 

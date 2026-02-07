@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LaraBookmarks</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-black text-white font-sans min-h-screen">
 
-<header class="bg-gray-900 border-b border-red-800 px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-red-600">LaraBookmarks</h1>
-    <nav class="flex items-center space-x-4">
-        <a href="{{ route('dashboard') }}" class="hover:text-red-600">Dashboard</a>
-        <a href="{{ route('links.index') }}" class="hover:text-red-600">Liens</a>
-        <a href="{{ route('categories.index') }}" class="hover:text-red-600">Catégories</a>
-        <form action="{{ route('logout') }}" method="POST" class="inline">
+<body class="bg-gray-100 text-gray-800">
+
+<div class="min-h-screen flex">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-white border-r border-gray-200 p-6 flex flex-col">
+
+        <!-- Logo -->
+        <h1 class="text-2xl font-bold text-red-700 mb-10">
+            LaraBookmarks
+        </h1>
+
+        <!-- Navigation -->
+        <nav class="space-y-3 flex-1">
+            <a href="{{ route('dashboard') }}"
+               class="block px-4 py-2 rounded-lg hover:bg-red-50 text-gray-700">
+                Dashboard
+            </a>
+
+            <a href="{{ route('links.index') }}"
+               class="block px-4 py-2 rounded-lg hover:bg-red-50 text-gray-700">
+                Liens
+            </a>
+
+            <a href="{{ route('categories.index') }}"
+               class="block px-4 py-2 rounded-lg hover:bg-red-50 text-gray-700">
+                Catégories
+            </a>
+
+            <a href="{{ route('profile.edit') }}"
+               class="block px-4 py-2 rounded-lg hover:bg-red-50 text-gray-700">
+                Profil
+            </a>
+        </nav>
+
+        <!-- Déconnexion -->
+        <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit" class="hover:text-red-600">Déconnexion</button>
+            <button type="submit"
+                class="w-full mt-6 px-4 py-2 rounded-lg
+                       bg-red-600 text-white
+                       hover:bg-red-700 transition">
+                Déconnexion
+            </button>
         </form>
-    </nav>
-</header>
 
-<main class="p-6">
-    {{ $slot }}
-</main>
+    </aside>
+
+    <!-- CONTENU -->
+    <main class="flex-1 p-8">
+
+        @isset($header)
+            <div class="mb-8">
+                {{ $header }}
+            </div>
+        @endisset
+
+        {{ $slot }}
+
+    </main>
+
+</div>
 
 </body>
 </html>
