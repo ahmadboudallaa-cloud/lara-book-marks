@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth','is_active'])->group(function () {
+Route::middleware(['auth', 'is_active'])->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -24,7 +24,7 @@ Route::middleware(['auth','is_active'])->group(function () {
     Route::resource('categories', CategoryController::class);
 
     // LINKS
-Route::resource('links', LinkController::class)->except(['show']);
+    Route::resource('links', LinkController::class)->except(['show']);
 
     // SEARCH
     Route::get('/links/search', [LinkController::class, 'search'])->name('links.search');
