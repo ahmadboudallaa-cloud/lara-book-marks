@@ -1,59 +1,133 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🚀 LaraBookmarks
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Application web professionnelle de gestion de ressources développée avec Laravel 11.
 
-## About Laravel
+LaraBookmarks permet aux utilisateurs d’organiser, catégoriser et rechercher efficacement leurs liens favoris grâce à une architecture sécurisée et conforme aux standards modernes de développement web.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+🎯 Objectif du projet
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Valider la maîtrise de :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+L’architecture MVC
 
-## Learning Laravel
+L’authentification Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Les relations Eloquent (One-to-Many & Many-to-Many)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+La sécurisation via Middleware
 
-## Laravel Sponsors
+La structuration d’un projet Laravel professionnel
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+🏗 Architecture Technique
+Élément	Technologie
+Framework	Laravel 11
+Base de données	MySQL
+ORM	Eloquent
+Frontend	Blade + Tailwind CSS
+Authentification	Laravel Breeze
+Sécurité	Middleware personnalisé
+📊 Structure de la Base de Données
+Tables principales
 
-### Premium Partners
+users
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+categories
 
-## Contributing
+links
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+tags
 
-## Code of Conduct
+link_tag (table pivot)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+🔗 Relations Eloquent
+🔹 One-to-Many
 
-## Security Vulnerabilities
+Un utilisateur → plusieurs catégories
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Un utilisateur → plusieurs liens
 
-## License
+Une catégorie → plusieurs liens
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+🔹 Many-to-Many
+
+Un lien ↔ plusieurs tags
+
+Un tag ↔ plusieurs liens
+
+🔐 Sécurité & Middleware
+Authentification complète
+
+Inscription
+
+Connexion / Déconnexion
+
+Profil utilisateur
+
+Middleware is_active
+
+Si le champ users.is_active = false :
+
+L’accès est bloqué
+
+L’utilisateur est automatiquement déconnecté
+
+Message affiché :
+
+“Votre compte est désactivé. Veuillez contacter l’administrateur.”
+
+⚙ Fonctionnalités Principales
+📂 Gestion des Catégories
+
+Création
+
+Modification
+
+Suppression
+
+Isolation par utilisateur
+
+🔗 Gestion des Liens
+
+Ajout
+
+Édition
+
+Suppression
+
+Association à une catégorie
+
+🏷 Système de Tags
+
+Création dynamique des tags
+
+Association multiple via table pivot
+
+Synchronisation automatique
+
+🔎 Recherche Avancée
+
+Recherche par :
+
+Titre
+
+Catégorie
+
+Tags
+
+Requête sécurisée et isolée par utilisateur.
+
+🎨 Design & UX
+
+Interface moderne et claire
+
+Palette professionnelle : blanc / gris clair / rouge sombre
+
+Responsive
+
+Sidebar de navigation
+
+Dashboard avec statistiques
+
+Gestion des textes longs
+
+Expérience utilisateur optimisée
